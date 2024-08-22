@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Horário - Barbearia</title>
-    <link rel="stylesheet" href="../css/barbearia.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Agende seu horário</h1>
         <h2>Barbearia do Homem</h2>
+        <img src="logo-barbearia_244x244.jpeg" alt="Logo Barbearia do Homem" class="logo">
         <form id="agendamentoForm" onsubmit="enviarParaWhatsApp(); return false;">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
@@ -21,7 +22,9 @@
             <input type="date" id="data" name="data" required>
 
             <label for="horario">Horário:</label>
-            <input type="time" id="horario" name="horario" required>
+            <select id="horario" name="horario" required>
+                <!-- Horários serão preenchidos pelo JavaScript -->
+            </select>
 
             <label for="barbeiro">Escolha seu barbeiro:</label>
             <select id="barbeiro" name="barbeiro" required>
@@ -34,21 +37,6 @@
         </form>
     </div>
 
-    <script>
-        function enviarParaWhatsApp() {
-            const nome = document.getElementById('nome').value;
-            const telefone = document.getElementById('telefone').value;
-            const data = document.getElementById('data').value;
-            const horario = document.getElementById('horario').value;
-            const barbeiro = document.getElementById('barbeiro').value;
-
-            const mensagem = `*Novo Agendamento*%0A*Nome*: ${nome}%0A*Telefone*: ${telefone}%0A*Data*: ${data}%0A*Horário*: ${horario}%0A*Barbeiro*: ${barbeiro}`;
-            const numeroWhatsApp = '5548988114792';  // Substitua pelo número da barbearia com código do país (55 para Brasil).
-
-            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`;
-
-            window.open(url, '_blank');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
